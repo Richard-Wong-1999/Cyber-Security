@@ -1,0 +1,19 @@
+<%- include("layout.ejs") %>
+
+<h2>Message Board</h2>
+
+<form method="POST" action="/messages">
+  <textarea name="msg" placeholder="Write a message..."></textarea>
+  <button type="submit">Post</button>
+</form>
+
+<h3>Messages</h3>
+<ul>
+  <% messages.forEach(function(m) { %>
+      <li><%- m %></li> <!-- Stored XSS -->
+  <% }); %>
+</ul>
+
+<a href="/logout">Logout</a>
+
+<%- include("footer.ejs") %>
